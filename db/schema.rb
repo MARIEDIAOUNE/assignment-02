@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_09_23_193435) do
     t.string "last_name"
     t.integer "nine_hundred"
     t.string "email"
-    t.integer "office_id", null: false
+    t.integer "office_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["office_id"], name: "index_teachers_on_office_id"
