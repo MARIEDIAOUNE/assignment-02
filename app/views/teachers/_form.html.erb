@@ -33,12 +33,7 @@
 
   <div class="field">
     <%= form.label :office_id %>
-    <%= form.text_field :office_id %>
-  </div>
-
-  <div class="field">
-  <%= form.label :office_id %>
-  <%= form.collection_select  :office_id, Office.all. :id, :office_BuldingAndNum, :include_blank => true %>
+    <%= form.collection_select  :office_id, Office.all, :id, :office_BuldingAndNum, :include_blank => true %>
   </div>
 
 
