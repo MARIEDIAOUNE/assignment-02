@@ -17,6 +17,8 @@ class CoursesController < ApplicationController
 
   # GET /courses/1/edit
   def edit
+    # @course = Course.all
+    # @sections = Section.all
   end
 
   # POST /courses or /courses.json
@@ -64,6 +66,6 @@ class CoursesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def course_params
-      params.require(:course).permit(:prefix, :number, :description)
+      params.require(:course).permit(:prefix, :number, :description, section_id: [])
     end
 end

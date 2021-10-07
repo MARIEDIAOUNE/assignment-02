@@ -15,11 +15,11 @@
   <%= @course.description %>
 </p>
 
-<ol>
+<p>
   <% @course.sections.each do |section| %>
-      <li><%= section %>
-  <%end%>
-</ol>
+    <%= section.semester %> <%= section.year %> <br>
+  <% end %>
+</p>
 
 
 <%= link_to 'Edit', edit_course_path(@course) %> |
