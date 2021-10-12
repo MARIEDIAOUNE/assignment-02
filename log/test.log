@@ -1459,3 +1459,474 @@ Processing by OfficesController#update as HTML
 Redirected to http://www.example.com/offices/980190962
 Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 586)
   [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (34.8ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = ?[0m  [["key", "schema_sha1"]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT sqlite_version(*)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = ON[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = OFF[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+  [1m[36mFixtures Load (2.8ms)[0m  [1m[31mDELETE FROM "courses";
+DELETE FROM "offices";
+DELETE FROM "sections";
+DELETE FROM "teachers";
+INSERT INTO "courses" ("id", "prefix", "number", "description", "created_at", "updated_at") VALUES (980190962, 'MyString', 1, 'MyString', '2021-10-12 18:32:15.565646', '2021-10-12 18:32:15.565646');
+INSERT INTO "courses" ("id", "prefix", "number", "description", "created_at", "updated_at") VALUES (298486374, 'MyString', 1, 'MyString', '2021-10-12 18:32:15.565646', '2021-10-12 18:32:15.565646');
+INSERT INTO "offices" ("id", "building_name", "floor_number", "room_number", "created_at", "updated_at") VALUES (980190962, 'MyString', 1, 1, '2021-10-12 18:32:15.568079', '2021-10-12 18:32:15.568079');
+INSERT INTO "offices" ("id", "building_name", "floor_number", "room_number", "created_at", "updated_at") VALUES (298486374, 'MyString', 1, 1, '2021-10-12 18:32:15.568079', '2021-10-12 18:32:15.568079');
+INSERT INTO "sections" ("id", "year", "semester", "course_id", "created_at", "updated_at") VALUES (980190962, 1, 'MyString', 980190962, '2021-10-12 18:32:15.569743', '2021-10-12 18:32:15.569743');
+INSERT INTO "sections" ("id", "year", "semester", "course_id", "created_at", "updated_at") VALUES (298486374, 1, 'MyString', 298486374, '2021-10-12 18:32:15.569743', '2021-10-12 18:32:15.569743');
+INSERT INTO "teachers" ("id", "first_name", "last_name", "nine_hundred", "email", "office_id", "created_at", "updated_at") VALUES (980190962, 'MyString', 'MyString', 1, 'MyString', 980190962, '2021-10-12 18:32:15.571337', '2021-10-12 18:32:15.571337');
+INSERT INTO "teachers" ("id", "first_name", "last_name", "nine_hundred", "email", "office_id", "created_at", "updated_at") VALUES (298486374, 'MyString', 'MyString', 1, 'MyString', 298486374, '2021-10-12 18:32:15.571337', '2021-10-12 18:32:15.571337')[0m
+  [1m[36mTRANSACTION (7.8ms)[0m  [1m[36mcommit transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA defer_foreign_keys = 0[0m
+  [1m[35m (0.1ms)[0m  [1m[35mPRAGMA foreign_keys = 1[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------
+OfficesControllerTest: test_should_destroy_office
+-------------------------------------------------
+  [1m[36mOffice Load (0.4ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "offices"[0m
+Started DELETE "/offices/980190962" for 127.0.0.1 at 2021-10-12 12:32:18 -0600
+Processing by OfficesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mOffice Load (0.2ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeacher Load (0.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."office_id" = ? LIMIT ?[0m  [["office_id", 980190962], ["LIMIT", 1]]
+  [1m[36mTeacher Update (1.9ms)[0m  [1m[33mUPDATE "teachers" SET "office_id" = ? WHERE "teachers"."id" = ?[0m  [["office_id", nil], ["id", 980190962]]
+  [1m[36mOffice Destroy (0.3ms)[0m  [1m[31mDELETE FROM "offices" WHERE "offices"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/offices
+Completed 302 Found in 331ms (ActiveRecord: 2.7ms | Allocations: 6643)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "offices"[0m
+  [1m[36mTRANSACTION (1.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+OfficesControllerTest: test_should_get_new
+------------------------------------------
+  [1m[36mOffice Load (0.5ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/offices/new" for 127.0.0.1 at 2021-10-12 12:32:19 -0600
+Processing by OfficesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offices/new.html.erb within layouts/application
+  Rendered offices/_form.html.erb (Duration: 322.9ms | Allocations: 2964)
+  Rendered offices/new.html.erb within layouts/application (Duration: 373.2ms | Allocations: 3374)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 1332.0ms | Allocations: 24007)
+Completed 200 OK in 1514ms (Views: 1437.6ms | ActiveRecord: 0.0ms | Allocations: 25744)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+OfficesControllerTest: test_should_get_edit
+-------------------------------------------
+  [1m[36mOffice Load (0.2ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/offices/980190962/edit" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by OfficesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mOffice Load (0.1ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering offices/edit.html.erb within layouts/application
+  Rendered offices/_form.html.erb (Duration: 1.8ms | Allocations: 864)
+  Rendered offices/edit.html.erb within layouts/application (Duration: 21.4ms | Allocations: 1077)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 33.7ms | Allocations: 2559)
+Completed 200 OK in 39ms (Views: 34.4ms | ActiveRecord: 0.1ms | Allocations: 3114)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+OfficesControllerTest: test_should_create_office
+------------------------------------------------
+  [1m[36mOffice Load (0.4ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "offices"[0m
+Started POST "/offices" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by OfficesController#create as HTML
+  Parameters: {"office"=>{"building_name"=>"MyString", "floor_number"=>"1", "room_number"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mOffice Create (2.4ms)[0m  [1m[32mINSERT INTO "offices" ("building_name", "floor_number", "room_number", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["building_name", "MyString"], ["floor_number", 1], ["room_number", 1], ["created_at", "2021-10-12 18:32:20.604669"], ["updated_at", "2021-10-12 18:32:20.604669"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/offices/980190963
+Completed 302 Found in 7ms (ActiveRecord: 2.6ms | Allocations: 865)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "offices"[0m
+  [1m[36mOffice Load (0.2ms)[0m  [1m[34mSELECT "offices".* FROM "offices" ORDER BY "offices"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+OfficesControllerTest: test_should_update_office
+------------------------------------------------
+  [1m[36mOffice Load (0.4ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/offices/980190962" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by OfficesController#update as HTML
+  Parameters: {"office"=>{"building_name"=>"MyString", "floor_number"=>"1", "room_number"=>"1"}, "id"=>"980190962"}
+  [1m[36mOffice Load (0.1ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/offices/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 597)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+OfficesControllerTest: test_should_show_office
+----------------------------------------------
+  [1m[36mOffice Load (0.5ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/offices/980190962" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by OfficesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mOffice Load (0.1ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering offices/show.html.erb within layouts/application
+  Rendered offices/show.html.erb within layouts/application (Duration: 19.7ms | Allocations: 252)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 34.0ms | Allocations: 1735)
+Completed 200 OK in 43ms (Views: 35.0ms | ActiveRecord: 0.1ms | Allocations: 2296)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+OfficesControllerTest: test_should_get_index
+--------------------------------------------
+  [1m[36mOffice Load (0.5ms)[0m  [1m[34mSELECT "offices".* FROM "offices" WHERE "offices"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/offices" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by OfficesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering offices/index.html.erb within layouts/application
+  [1m[36mOffice Load (0.2ms)[0m  [1m[34mSELECT "offices".* FROM "offices"[0m
+  Rendered offices/index.html.erb within layouts/application (Duration: 33.7ms | Allocations: 615)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 42.5ms | Allocations: 2107)
+Completed 200 OK in 49ms (Views: 43.1ms | ActiveRecord: 0.2ms | Allocations: 2575)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+TeachersControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/teachers/980190962/edit" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by TeachersController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTeacher Load (0.1ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering teachers/edit.html.erb within layouts/application
+  [1m[36mOffice Load (0.1ms)[0m  [1m[34mSELECT "offices".* FROM "offices"[0m
+  Rendered teachers/_form.html.erb (Duration: 70.7ms | Allocations: 2118)
+  Rendered teachers/edit.html.erb within layouts/application (Duration: 94.9ms | Allocations: 2446)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 106.9ms | Allocations: 3928)
+Completed 200 OK in 121ms (Views: 114.8ms | ActiveRecord: 0.2ms | Allocations: 4997)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+TeachersControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mTeacher Load (0.4ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/teachers" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by TeachersController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teachers/index.html.erb within layouts/application
+  [1m[36mTeacher Load (0.3ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers"[0m
+  Rendered teachers/index.html.erb within layouts/application (Duration: 35.1ms | Allocations: 653)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 48.5ms | Allocations: 2144)
+Completed 200 OK in 55ms (Views: 49.0ms | ActiveRecord: 0.3ms | Allocations: 2606)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+TeachersControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mTeacher Load (0.3ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/teachers/new" for 127.0.0.1 at 2021-10-12 12:32:20 -0600
+Processing by TeachersController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering teachers/new.html.erb within layouts/application
+  [1m[36mOffice Load (0.1ms)[0m  [1m[34mSELECT "offices".* FROM "offices"[0m
+  Rendered teachers/_form.html.erb (Duration: 3.4ms | Allocations: 1368)
+  Rendered teachers/new.html.erb within layouts/application (Duration: 23.6ms | Allocations: 1532)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 31.8ms | Allocations: 3021)
+Completed 200 OK in 37ms (Views: 32.3ms | ActiveRecord: 0.1ms | Allocations: 3484)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+TeachersControllerTest: test_should_destroy_teacher
+---------------------------------------------------
+  [1m[36mTeacher Load (0.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "teachers"[0m
+Started DELETE "/teachers/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by TeachersController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTeacher Load (0.0ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeacher Destroy (1.2ms)[0m  [1m[31mDELETE FROM "teachers" WHERE "teachers"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/teachers
+Completed 302 Found in 3ms (ActiveRecord: 1.3ms | Allocations: 543)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "teachers"[0m
+  [1m[36mTRANSACTION (0.8ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+TeachersControllerTest: test_should_show_teacher
+------------------------------------------------
+  [1m[36mTeacher Load (0.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/teachers/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by TeachersController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mTeacher Load (0.1ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering teachers/show.html.erb within layouts/application
+  Rendered teachers/show.html.erb within layouts/application (Duration: 11.3ms | Allocations: 297)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 18.8ms | Allocations: 1780)
+Completed 200 OK in 22ms (Views: 19.2ms | ActiveRecord: 0.1ms | Allocations: 2334)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+TeachersControllerTest: test_should_update_teacher
+--------------------------------------------------
+  [1m[36mTeacher Load (0.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/teachers/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by TeachersController#update as HTML
+  Parameters: {"teacher"=>{"email"=>"MyString", "first_name"=>"MyString", "last_name"=>"MyString", "nine_hundred"=>"1", "office_id"=>"980190962"}, "id"=>"980190962"}
+  [1m[36mTeacher Load (0.1ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/teachers/980190962
+Completed 302 Found in 2ms (ActiveRecord: 0.1ms | Allocations: 650)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+TeachersControllerTest: test_should_create_teacher
+--------------------------------------------------
+  [1m[36mTeacher Load (0.3ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" WHERE "teachers"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "teachers"[0m
+Started POST "/teachers" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by TeachersController#create as HTML
+  Parameters: {"teacher"=>{"email"=>"MyString", "first_name"=>"MyString", "last_name"=>"MyString", "nine_hundred"=>"1", "office_id"=>"980190962"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mTeacher Create (1.6ms)[0m  [1m[32mINSERT INTO "teachers" ("first_name", "last_name", "nine_hundred", "email", "office_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)[0m  [["first_name", "MyString"], ["last_name", "MyString"], ["nine_hundred", 1], ["email", "MyString"], ["office_id", 980190962], ["created_at", "2021-10-12 18:32:21.066101"], ["updated_at", "2021-10-12 18:32:21.066101"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/teachers/980190963
+Completed 302 Found in 5ms (ActiveRecord: 1.7ms | Allocations: 760)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "teachers"[0m
+  [1m[36mTeacher Load (0.2ms)[0m  [1m[34mSELECT "teachers".* FROM "teachers" ORDER BY "teachers"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------
+CoursesControllerTest: test_should_show_course
+----------------------------------------------
+  [1m[36mCourse Load (0.5ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/courses/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering courses/show.html.erb within layouts/application
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."course_id" = ?[0m  [["course_id", 980190962]]
+  Rendered courses/show.html.erb within layouts/application (Duration: 97.3ms | Allocations: 3660)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 110.9ms | Allocations: 5143)
+Completed 200 OK in 123ms (Views: 116.5ms | ActiveRecord: 0.4ms | Allocations: 6220)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------
+CoursesControllerTest: test_should_get_new
+------------------------------------------
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/courses/new" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering courses/new.html.erb within layouts/application
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  Rendered courses/_form.html.erb (Duration: 178.1ms | Allocations: 2600)
+  Rendered courses/new.html.erb within layouts/application (Duration: 191.4ms | Allocations: 2884)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 204.8ms | Allocations: 4373)
+Completed 200 OK in 210ms (Views: 205.2ms | ActiveRecord: 0.2ms | Allocations: 4834)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+CoursesControllerTest: test_should_get_index
+--------------------------------------------
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/courses" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering courses/index.html.erb within layouts/application
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  Rendered courses/index.html.erb within layouts/application (Duration: 26.9ms | Allocations: 612)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 39.3ms | Allocations: 2103)
+Completed 200 OK in 46ms (Views: 39.8ms | ActiveRecord: 0.3ms | Allocations: 2565)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+CoursesControllerTest: test_should_update_course
+------------------------------------------------
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/courses/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#update as HTML
+  Parameters: {"course"=>{"description"=>"MyString", "number"=>"1", "prefix"=>"MyString"}, "id"=>"980190962"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/courses/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 714)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+CoursesControllerTest: test_should_get_edit
+-------------------------------------------
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/courses/980190962/edit" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering courses/edit.html.erb within layouts/application
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT "sections"."id" FROM "sections" WHERE "sections"."course_id" = ?[0m  [["course_id", 980190962]]
+  Rendered courses/_form.html.erb (Duration: 6.6ms | Allocations: 1551)
+  Rendered courses/edit.html.erb within layouts/application (Duration: 25.1ms | Allocations: 1759)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 38.5ms | Allocations: 3241)
+Completed 200 OK in 46ms (Views: 38.9ms | ActiveRecord: 0.7ms | Allocations: 3791)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------
+CoursesControllerTest: test_should_destroy_course
+-------------------------------------------------
+  [1m[36mCourse Load (0.3ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses"[0m
+Started DELETE "/courses/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSection Update All (0.4ms)[0m  [1m[33mUPDATE "sections" SET "course_id" = ? WHERE "sections"."course_id" = ?[0m  [["course_id", nil], ["course_id", 980190962]]
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[31mROLLBACK TO SAVEPOINT active_record_1[0m
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.6ms | Allocations: 834)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+CoursesControllerTest: test_should_create_course
+------------------------------------------------
+  [1m[36mCourse Load (0.4ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses"[0m
+Started POST "/courses" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by CoursesController#create as HTML
+  Parameters: {"course"=>{"description"=>"MyString", "number"=>"1", "prefix"=>"MyString"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mCourse Create (1.5ms)[0m  [1m[32mINSERT INTO "courses" ("prefix", "number", "description", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["prefix", "MyString"], ["number", 1], ["description", "MyString"], ["created_at", "2021-10-12 18:32:21.614423"], ["updated_at", "2021-10-12 18:32:21.614423"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/courses/980190963
+Completed 302 Found in 4ms (ActiveRecord: 1.6ms | Allocations: 780)
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "courses"[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" ORDER BY "courses"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.6ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+SectionsControllerTest: test_should_update_section
+--------------------------------------------------
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started PATCH "/sections/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#update as HTML
+  Parameters: {"section"=>{"course_id"=>"980190962", "semester"=>"MyString", "year"=>"1"}, "id"=>"980190962"}
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Redirected to http://www.example.com/sections/980190962
+Completed 302 Found in 3ms (ActiveRecord: 0.1ms | Allocations: 815)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------
+SectionsControllerTest: test_should_get_edit
+--------------------------------------------
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/sections/980190962/edit" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#edit as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sections/edit.html.erb within layouts/application
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  Rendered sections/_form.html.erb (Duration: 22.7ms | Allocations: 1446)
+  Rendered sections/edit.html.erb within layouts/application (Duration: 46.6ms | Allocations: 1774)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 54.2ms | Allocations: 3256)
+Completed 200 OK in 68ms (Views: 61.8ms | ActiveRecord: 0.2ms | Allocations: 4172)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------
+SectionsControllerTest: test_should_show_section
+------------------------------------------------
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/sections/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#show as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendering layout layouts/application.html.erb
+  Rendering sections/show.html.erb within layouts/application
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendered sections/show.html.erb within layouts/application (Duration: 14.9ms | Allocations: 620)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 24.1ms | Allocations: 2103)
+Completed 200 OK in 30ms (Views: 24.9ms | ActiveRecord: 0.2ms | Allocations: 2655)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------
+SectionsControllerTest: test_should_get_new
+-------------------------------------------
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/sections/new" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#new as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sections/new.html.erb within layouts/application
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses"[0m
+  Rendered sections/_form.html.erb (Duration: 2.7ms | Allocations: 982)
+  Rendered sections/new.html.erb within layouts/application (Duration: 23.9ms | Allocations: 1146)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 32.1ms | Allocations: 2635)
+Completed 200 OK in 37ms (Views: 32.6ms | ActiveRecord: 0.1ms | Allocations: 3096)
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.0ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------
+SectionsControllerTest: test_should_create_section
+--------------------------------------------------
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+Started POST "/sections" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#create as HTML
+  Parameters: {"section"=>{"course_id"=>"980190962", "semester"=>"MyString", "year"=>"1"}}
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSection Create (1.4ms)[0m  [1m[32mINSERT INTO "sections" ("year", "semester", "course_id", "created_at", "updated_at") VALUES (?, ?, ?, ?, ?)[0m  [["year", 1], ["semester", "MyString"], ["course_id", 980190962], ["created_at", "2021-10-12 18:32:21.809623"], ["updated_at", "2021-10-12 18:32:21.809623"]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sections/980190963
+Completed 302 Found in 5ms (ActiveRecord: 1.6ms | Allocations: 717)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+  [1m[36mSection Load (0.2ms)[0m  [1m[34mSELECT "sections".* FROM "sections" ORDER BY "sections"."id" DESC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mTRANSACTION (1.3ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------
+SectionsControllerTest: test_should_get_index
+---------------------------------------------
+  [1m[36mSection Load (0.3ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+Started GET "/sections" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#index as HTML
+  Rendering layout layouts/application.html.erb
+  Rendering sections/index.html.erb within layouts/application
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections"[0m
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 298486374], ["LIMIT", 1]]
+  [1m[36mCourse Load (0.1ms)[0m  [1m[34mSELECT "courses".* FROM "courses" WHERE "courses"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  Rendered sections/index.html.erb within layouts/application (Duration: 29.4ms | Allocations: 1010)
+[Webpacker] Everything's up-to-date. Nothing to do
+  Rendered layout layouts/application.html.erb (Duration: 40.9ms | Allocations: 2501)
+Completed 200 OK in 46ms (Views: 41.3ms | ActiveRecord: 0.3ms | Allocations: 2963)
+  [1m[36mTRANSACTION (0.2ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------
+SectionsControllerTest: test_should_destroy_section
+---------------------------------------------------
+  [1m[36mSection Load (0.4ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+Started DELETE "/sections/980190962" for 127.0.0.1 at 2021-10-12 12:32:21 -0600
+Processing by SectionsController#destroy as HTML
+  Parameters: {"id"=>"980190962"}
+  [1m[36mSection Load (0.1ms)[0m  [1m[34mSELECT "sections".* FROM "sections" WHERE "sections"."id" = ? LIMIT ?[0m  [["id", 980190962], ["LIMIT", 1]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mSAVEPOINT active_record_1[0m
+  [1m[36mSection Destroy (1.8ms)[0m  [1m[31mDELETE FROM "sections" WHERE "sections"."id" = ?[0m  [["id", 980190962]]
+  [1m[36mTRANSACTION (0.1ms)[0m  [1m[35mRELEASE SAVEPOINT active_record_1[0m
+Redirected to http://www.example.com/sections
+Completed 302 Found in 5ms (ActiveRecord: 2.1ms | Allocations: 539)
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "sections"[0m
+  [1m[36mTRANSACTION (1.1ms)[0m  [1m[31mrollback transaction[0m
